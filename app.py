@@ -41,7 +41,7 @@ def create_account():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/add_task", method=['POST'])
+@app.route("/api/add_task", methods=['POST'])
 def add_task():
     logging.info("Http: add_task")
     try:
@@ -52,7 +52,7 @@ def add_task():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/get_result", method=['POST'])
+@app.route("/api/get_result", methods=['POST'])
 def get_result():
     logging.info("Http: get_result")
     try:
@@ -63,7 +63,7 @@ def get_result():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/set", method=['POST'])
+@app.route("/api/set", methods=['POST'])
 def set_():
     logging.info("Http: set")
     try:
@@ -74,7 +74,7 @@ def set_():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/set_person_api_key", method=['POST'])
+@app.route("/api/set_person_api_key", methods=['POST'])
 def set_person_api_key():
     logging.info("Http: set_person_api_key")
     try:
@@ -85,7 +85,7 @@ def set_person_api_key():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/get", method=['POST'])
+@app.route("/api/get", methods=['POST'])
 def get():
     logging.info("Http: get")
     try:
@@ -96,7 +96,7 @@ def get():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/put_model", method=['POST'])
+@app.route("/api/put_model", methods=['POST'])
 def put_model():
     logging.info("Http: put_model")
     try:
@@ -107,7 +107,7 @@ def put_model():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/search_model", method=['POST'])
+@app.route("/api/search_model", methods=['POST'])
 def search_model():
     logging.info("Http: search_model")
     try:
@@ -118,7 +118,7 @@ def search_model():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/model_enable", method=['POST'])
+@app.route("/api/model_enable", methods=['POST'])
 def model_enable():
     logging.info("Http: model_enable")
     try:
@@ -129,7 +129,7 @@ def model_enable():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/get_info", method=['POST'])
+@app.route("/api/get_info", methods=['POST'])
 def get_info():
     logging.info("Http: get_info")
     try:
@@ -140,7 +140,7 @@ def get_info():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/set_model_name_by_version_id", method=['POST'])
+@app.route("/api/set_model_name_by_version_id", methods=['POST'])
 def set_model_name_by_version_id():
     logging.info("Http: set_model_name_by_version_id")
     try:
@@ -151,7 +151,7 @@ def set_model_name_by_version_id():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/set_credit", method=['POST'])
+@app.route("/api/set_credit", methods=['POST'])
 def set_credit():
     logging.info("Http: set_credit")
     try:
@@ -162,7 +162,7 @@ def set_credit():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/add_credit", method=['POST'])
+@app.route("/api/add_credit", methods=['POST'])
 def add_credit():
     logging.info("Http: add_credit")
     try:
@@ -173,7 +173,7 @@ def add_credit():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/add_prompt", method=['POST'])
+@app.route("/api/add_prompt", methods=['POST'])
 def add_prompt():
     logging.info("Http: add_prompt")
     try:
@@ -184,7 +184,7 @@ def add_prompt():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
-@app.route("/api/add_negative_prompt", method=['POST'])
+@app.route("/api/add_negative_prompt", methods=['POST'])
 def add_negative_prompt():
     logging.info("Http: add_negative_prompt")
     try:
@@ -193,3 +193,12 @@ def add_negative_prompt():
         return jsonify(system.add_negative_prompt(data["account_id"], data["mode"], data["prompt"]))
     except KeyError:
         return jsonify({"code": 1, "msg": "Parameter Error"})
+
+
+@app.route("/")
+def main_page():
+    return """
+    <html><body>
+    <a>omni infer api</a>
+    </body></html>
+    """

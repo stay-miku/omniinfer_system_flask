@@ -1,6 +1,7 @@
 import omniifer_api
 import omniinfer_account
 import atexit
+import signal
 import logging
 from flask import Flask, request, jsonify
 
@@ -17,8 +18,8 @@ def exit_():
     system.stopping()
 
 
-atexit.register(exit_)
-
+# atexit.register(exit_)
+signal.signal(signal.SIGTERM, exit_)
 app = Flask(__name__)
 
 

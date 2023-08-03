@@ -29,11 +29,12 @@ def auth_verify():
         return jsonify({"code": 1, "msg": "Unauthorized"}), 401
 
 
+# 暴力停止
 @app.route("/api/exit")
 def flask_exit():
+    logging.info("Http: exit")
     exit_()
     os.system("pkill gunicorn")
-
 
 
 @app.route("/api/create_account", methods=['POST'])

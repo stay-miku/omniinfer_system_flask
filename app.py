@@ -1,7 +1,7 @@
+import os
+
 import omniifer_api
 import omniinfer_account
-import atexit
-import signal
 import logging
 from flask import Flask, request, jsonify
 
@@ -18,8 +18,6 @@ def exit_():
     system.stopping()
 
 
-# atexit.register(exit_)
-signal.signal(signal.SIGTERM, exit_)
 app = Flask(__name__)
 
 
@@ -29,6 +27,13 @@ def auth_verify():
     if auth_key != config.auth_key:
         logging.warning("Http: Unauthorized")
         return jsonify({"code": 1, "msg": "Unauthorized"}), 401
+
+
+@app.route("/api/exit")
+def flask_exit():
+    exit_()
+    os.system("pkill gunicorn")
+
 
 
 @app.route("/api/create_account", methods=['POST'])

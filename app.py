@@ -59,6 +59,17 @@ def add_task():
         return jsonify({"code": 1, "msg": "Parameter Error"})
 
 
+@app.route("/api/add_upscale_task", methods=['POST'])
+def add_upscale_task():
+    logging.info("Http: add_upscale_task")
+    try:
+        global system
+        data = request.get_json()
+        return jsonify(system.add_upscale_task(data["account_id"], data["image"], data["resize"], data["upscaler"]))
+    except KeyError:
+        return jsonify({"code": 1, "msg": "Parameter Error"})
+
+
 @app.route("/api/get_result", methods=['POST'])
 def get_result():
     logging.info("Http: get_result")
